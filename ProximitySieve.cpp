@@ -30,7 +30,7 @@ int main()
 	bool testing_mode = true; // DEFAULT = false                                              fatal if broken >     |
 	//                                                                                                               |
 	
-	int prime_length = 50; //Range: 50 to 1000000.
+	int prime_length = 50; //Range: 50 to 50000.
 	
 	/*////////////////                                        \\\\\\\\\\\\\\\\\\
 	///////////////////////                              \\\\\\\\\\\\\\\\\\\\\\\
