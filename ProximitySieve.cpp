@@ -145,14 +145,19 @@ int main()
 			//..........Removes zeros in front of divisor.
 			for(int b = 50180;; b++)
 			{	if(python_mod_command[b] == '0') {python_mod_command[b] = ' ';}
-				if(python_mod_command[b] >   48) {break                      ;}
+				if(python_mod_command[b]  >  48) {break                      ;}
 			}
 			
 			system(python_mod_command);
 		}
 	}
 	
-	//sieve from file values
+	/*Applies sieve to interval unrelated to prime candidate.
+	However,  what makes the sieved field related the prime
+	candidate,  is that the  prime divisors  are scattered
+	naturally, relative to zero  AND  the prime candidate!
+	(Thanks to the file listing n mod p for p<=65,536.) */
+	
 	
 	//FYI: ln(10^50,000) ~= 115,000
 	
@@ -161,6 +166,8 @@ int main()
 	for(int a = 0; a < 50300; a++) {cout << python_mod_command[a];}
 	
 	//OVERWRITE STUFFF!!!!!!!!!!!!!!!!!!!!!!!
+	
+	//remove mod_results
 }
 
 
