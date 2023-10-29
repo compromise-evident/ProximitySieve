@@ -153,10 +153,10 @@ int main()
 	}
 	
 	/*Applies sieve to interval unrelated to prime candidate.
-	However,  what makes the sieved field related the prime
-	candidate,  is that the  prime divisors  are scattered
-	naturally, relative to zero  AND  the prime candidate!
-	(Thanks to the file listing n mod p for p<=65,536.) */
+	However, what makes the sieved field related to the prime
+	candidate,  is that  the  prime  divisors  are  scattered
+	naturally,  relative to zero  AND  the  prime  candidate!
+	(Thanks to the file listing  n mod p  for  p<=65,536.) */
 	
 	
 	//FYI: ln(10^50,000) ~= 115,000
