@@ -30,7 +30,7 @@ int main()
 	bool testing_mode = true; // DEFAULT = false                                              fatal if broken >     |
 	//                                                                                                               |
 	
-	int prime_length = 500; //Range: 50 to 1000000.
+	int prime_length = 50; //Range: 50 to 1000000.
 	
 	/*////////////////                                        \\\\\\\\\\\\\\\\\\
 	///////////////////////                              \\\\\\\\\\\\\\\\\\\\\\\
@@ -86,10 +86,12 @@ int main()
 	}
 	else
 	{	//..........Fills seeds automatically (not secure, please turn off testing_mode.)
-		cout << "\nCAUTION: testing_mode is turned on!  Use of these files is strongly discouraged!";
+		cout << "\nCAUTION: testing_mode is turned on!  Use of these files is strongly discouraged!\n\n";
 		srand(time(0));
 		for(int a = 0; a < 50; a++) {user_seeds[a] = (rand() % 100000000);}
 	}
+	
+	cout << "Generating " << prime_length << "-digit prime...\n\n";
 	
 	//Fills random_digits[50000] with random digits. Its first n digits will be used.
 	unsigned char random_digits[50000] = {0};
@@ -115,10 +117,6 @@ int main()
 	//Ensures first digit is not zero.
 	if(random_digits[0] == 0) {random_digits[0]++;}
 	
-	//Brands python_mod_command[] with the n-digit random number (unchanging.)
-	for(int a = 0; a < prime_length; a++) {python_mod_command[a + 66] = (random_digits[a] + 48);}
-	python_mod_command[50100] = '%';
-	
 	//Boolean sieve of Eratosthenes. Zeros are mapped to prime elements. Laughably, bool[] & char[] both consume 1 Byte.
 	bool sieve[65536] = {1, 1};
 	for(int prime = 2; prime < 256; prime++) //..........256 is sqrt(65,536).
@@ -126,23 +124,43 @@ int main()
 		for(int a = prime + prime; a < 65536; a += prime) {sieve[a] = 1;} //..........Marks multiples (composites.)
 	}
 	
+	//Brands python_mod_command[] with the n-digit random number (unchanging.)
+	for(int a = 0; a < prime_length; a++) {python_mod_command[a + 66] = (random_digits[a] + 48);}
+	python_mod_command[50100] = '%';
+	
 	//Brands python_mod_command[] with 6,542 prime divisors, one-at-a-time, and executes mod operation, each result appended to file.
+	for(int a = 0; a < 65536; a++)
+	{	if(sieve[a] == 0)
+		{	//..........Brands.
+			long long branding_arithmetic = 1000000000000000000;
+			branding_arithmetic += a;
+			long long temp_branding_arithmetic = branding_arithmetic;
+			for(int b = 50200; b > 50183; b--) //..........Supports longer divisors!
+			{	python_mod_command[b] = (temp_branding_arithmetic % 10);
+				python_mod_command[b] += 48;
+				
+				temp_branding_arithmetic /= 10;
+			}
+			
+			//..........Removes zeros in front of divisor.
+			for(int b = 50180;; b++)
+			{	if(python_mod_command[b] == '0') {python_mod_command[b] = ' ';}
+				if(python_mod_command[b] >   48) {break                      ;}
+			}
+			
+			system(python_mod_command);
+		}
+	}
 	
-	
-	system(python_mod_command);
-	
-	
-	
-	
-	//OVERWRITE STUFFF!!!!!!!!!!!!!!!!!!!!!!!
+	//sieve from file values
 	
 	//FYI: ln(10^50,000) ~= 115,000
 	
-	/*
 	//TEST:
 	cout << "\n\nDone!\n\n";
 	for(int a = 0; a < 50300; a++) {cout << python_mod_command[a];}
-	*/
+	
+	//OVERWRITE STUFFF!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 
