@@ -86,12 +86,12 @@ int main()
 	}
 	else
 	{	//..........Fills seeds automatically (not secure, please turn off testing_mode.)
-		cout << "\nCAUTION: testing_mode is turned on!  Use of these files is strongly discouraged!\n\n";
+		cout << "\nCAUTION: testing_mode is turned on!  Use of these files is strongly discouraged!\n";
 		srand(time(0));
 		for(int a = 0; a < 50; a++) {user_seeds[a] = (rand() % 100000000);}
 	}
 	
-	cout << "Generating " << prime_length << "-digit prime...\n\n";
+	cout << "\nGenerating " << prime_length << "-digit prime...\n";
 	
 	//Fills random_digits[50000] with random digits. Its first n digits will be used.
 	unsigned char random_digits[50000] = {0};
@@ -152,6 +152,32 @@ int main()
 		}
 	}
 	
+	//Fills remainders[] with mod results from file "mod_results".
+	long long remainders[6542] = {0};
+	char garbage_byte;
+	in_stream.open("mod_results");
+	for(int a = 0; a < 6542; a++)
+	{	long long digits_of_individual_remainder[17];
+		for(int b = 0; b < 17; b++) {digits_of_individual_remainder[b] = -1;}
+		in_stream.get(garbage_byte);
+		for(int b = 0; garbage_byte != '\n'; b++)
+		{	digits_of_individual_remainder[b] = garbage_byte;
+			digits_of_individual_remainder[b] -= 48;
+			
+			in_stream.get(garbage_byte);
+		}
+		
+		for(int multiplier = 1, b = 16; b >= 0; b--)
+		{	if(digits_of_individual_remainder[b] != -1)
+			{	digits_of_individual_remainder[b] *= multiplier;
+				remainders[a] += digits_of_individual_remainder[b];
+				
+				multiplier *= 10;
+			}
+		}
+	}
+	in_stream.close();
+	
 	
 	
 	
@@ -166,19 +192,33 @@ int main()
 	so that at least a handful of  primes  are found unmarked
 	in the sieve.  ln((10^50,000)) ~= 115,000 numbers between
 	primes in the proximity sieve for primes of 50k digits.*/
-	bool proximity_sieve[2000000]; //..........This 2,000,000-element sieve accounts for ~18 consecutive 50k-digit primes, and ~18,000 consecutive 50-digit primes.
+	
+	/*Applies proximity sieve against proximity_sieve[2000000].
+	This  2M-element sieve  accounts  for  ~18,000  consecutive
+	50-digit primes,  and ~18 consecutive  50k-digit primes. */
+	
+	//Element 0 is the given random candidate prime. Zeros are mapped to prime elements.
+	bool proximity_sieve[2000000] = {0};
 	
 	
 	
-	//FYI: ln(10^50,000) ~= 115,000
 	
-	//TEST:
-	cout << "\n\nDone!\n\n";
-	for(int a = 0; a < 50300; a++) {cout << python_mod_command[a];}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//OVERWRITE STUFFF!!!!!!!!!!!!!!!!!!!!!!!
 	
 	//remove mod_results
+	
+	cout << "\nDone!\n\n\n";
 }
 
 
