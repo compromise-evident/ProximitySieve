@@ -158,6 +158,13 @@ int main()
 	naturally,  relative to zero  AND  the  prime  candidate!
 	(Thanks to the file listing  n mod p  for  p<=65,536.) */
 	
+	/*Proximity sieve must account for the largest prime gaps
+	so that at least a handful of  primes  are found unmarked
+	in the sieve.  ln(10^50,000)  ~=  115,000 numbers between
+	primes in the proximity sieve for primes of 50k digits.*/
+	bool proximity_sieve[2000000]; //..........This 2,000,000-element sieve accounts for ~18 50k-digit primes, and 18,000 50-digit primes.
+	
+	
 	
 	//FYI: ln(10^50,000) ~= 115,000
 	
