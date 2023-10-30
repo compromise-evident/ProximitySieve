@@ -152,6 +152,10 @@ int main()
 		}
 	}
 	
+	
+	
+	
+	
 	/*Applies sieve to interval unrelated to prime candidate.
 	However, what makes the sieved field related to the prime
 	candidate,  is that  the  prime  divisors  are  scattered
@@ -160,9 +164,9 @@ int main()
 	
 	/*Proximity sieve must account for the largest prime gaps
 	so that at least a handful of  primes  are found unmarked
-	in the sieve.  ln(10^50,000)  ~=  115,000 numbers between
+	in the sieve.  ln((10^50,000)) ~= 115,000 numbers between
 	primes in the proximity sieve for primes of 50k digits.*/
-	bool proximity_sieve[2000000]; //..........This 2,000,000-element sieve accounts for ~18 50k-digit primes, and 18,000 50-digit primes.
+	bool proximity_sieve[2000000]; //..........This 2,000,000-element sieve accounts for ~18 consecutive 50k-digit primes, and ~18,000 consecutive 50-digit primes.
 	
 	
 	
