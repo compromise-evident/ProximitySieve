@@ -29,10 +29,10 @@ int main()
 	\\\\\\\\\\\\\\\\\\                                        ////////////////*/
 	
 	//                                                                                                               |
-	bool testing_mode = true; // DEFAULT = false                                              fatal if broken >     |
+	bool testing_mode = false; // DEFAULT = false                                              fatal if broken >     |
 	//                                                                                                               |
 	
-	int prime_length = 50; //Range: 50 to 50000.
+	int prime_length = 500; //Range: 50 to 50000. (Technically lower limit is ~7.)
 	
 	/*////////////////                                        \\\\\\\\\\\\\\\\\\
 	///////////////////////                              \\\\\\\\\\\\\\\\\\\\\\\
@@ -93,6 +93,7 @@ int main()
 		for(int a = 0; a < 50; a++) {user_seeds[a] = (rand() % 100000000);}
 	}
 	
+	if(testing_mode == false) {system("clear");}
 	cout << "\nGenerating " << prime_length << "-digit prime...\n";
 	
 	//Fills random_digits[50000] with random digits. Its first n digits will be used.
@@ -228,22 +229,29 @@ int main()
 	//Append-writes prime to file.
 	system(python_mod_command);
 	
-	//Overwrites char python_mod_command[50300].
+	//Overwrites RAM of array char python_mod_command[50300].
 	for(int a = 0; a < 50300; a++) {python_mod_command[a] = '\0'; python_mod_command[a] = -1;} //Binary: 00000000, 111111111.
 	
+	//Overwrites RAM of array unsigned int user_seeds[50].
+	for(int a = 0; a < 50; a++) {user_seeds[a] = 0; user_seeds[a] = 12345678; user_seeds[a] = 87654321; user_seeds[a] = 99999999;}
 	
+	//Overwrites RAM of array unsigned char random_digits[50000].
+	for(int a = 0; a < 50000; a++) {random_digits[a] = 0; random_digits[a] = 255;} //Binary: 00000000, 111111111.
 	
+	//Overwrites RAM of array long long remainders[6542].
+	for(int a = 0; a < 6542; a++) {remainders[a] = 0; remainders[a] = -9223372036854775807; remainders[a] = 9223372036854775807;}
 	
+	//Overwrites RAM of array bool proximity_sieve[2000000].
+	for(int a = 0; a < 2000000; a++) {proximity_sieve[a] = 0; proximity_sieve[a] = 1;}
 	
+	//Overwrites file "mod_results".
+	out_stream.open("mod_results");
+	for(int a = 0; a < 100000; a++) {out_stream << '\0';} //Binary: 00000000.
+	out_stream.close();
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	out_stream.open("mod_results");
+	for(int a = 0; a < 100000; a++) {out_stream.put(-1);} //Binary: 11111111.
+	out_stream.close();
 	
 	remove("mod_results");
 	
