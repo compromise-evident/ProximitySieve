@@ -4,6 +4,7 @@
 
 
 /* Version 1.0.0
+Set testing_mode to true, and you won't have to enter randomness  for the seeds.
 Applies the sieve of Eratosthenes on an  interval near the n-digit random number
 --listing nearby primes, and testing only one and the same  # by all p <= 65536.
 This is a sort of pretest and is weak, but if n is the product of  at least some
