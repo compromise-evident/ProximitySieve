@@ -1,11 +1,13 @@
-/// ProximitySieve - fast prime number generator (50 to 50k digits in length, probabilistic.)
+/// ProximitySieve - generates prime checked with p<65,536 (50 to 50k digits long.)
 /// Nikolay Valentinovich Repnitskiy - License: WTFPLv2+ (wtfpl.net)
 
 
 
 /* Version 1.0.0
 Applies the sieve of Eratosthenes on an  interval near the n-digit random number
---listing nearby primes, and testing only one and the same # by all p<=65536. */
+--listing nearby primes, and testing only one and the same  # by all p <= 65536.
+This is a sort of pretest and is weak, but if n is the product of  at least some
+large primes, and your protocol expects whole length n, then this sieve is OK.*/
 
 #include <fstream>
 #include <iostream>
@@ -178,35 +180,53 @@ int main()
 	}
 	in_stream.close();
 	
-	
-	
-	
-	
-	/*Applies sieve to interval unrelated to prime candidate.
-	However, what makes the sieved field related to the prime
-	candidate,  is that  the  prime  divisors  are  scattered
-	naturally,  relative to zero  AND  the  prime  candidate!
-	(Thanks to the file listing  n mod p  for  p<=65,536.) */
-	
-	/*Proximity sieve must account for the largest prime gaps
-	so that at least a handful of  primes  are found unmarked
-	in the sieve.  ln((10^50,000)) ~= 115,000 numbers between
-	primes in the proximity sieve for primes of 50k digits.*/
-	
-	/*Applies proximity sieve against proximity_sieve[2000000].
-	This  2M-element sieve  accounts  for  ~18,000  consecutive
-	50-digit primes,  and ~18 consecutive  50k-digit primes. */
-	
-	//Element 0 represents the location of the given random candidate prime, on the number line. Zeros are mapped to prime elements.
+	//Applies proximity sieve. Element 0 represents location of the given random
+	//candidate prime, on the number line. Zeros are mapped to prime elements.
 	bool proximity_sieve[2000000] = {0};
+	long long remainder_index = 0;
+	for(int a = 0; a < 65536; a++)
+	{	if(sieve[a] == 0)
+		{	long long natural_prime_position = (a - remainders[remainder_index]);
+			proximity_sieve[natural_prime_position] = 1;
+			
+			for(; natural_prime_position < 1934460;)
+			{	natural_prime_position += a;
+				proximity_sieve[natural_prime_position] = 1;
+			}
+			
+			remainder_index++;
+		}
+	}
 	
+	//Adjusts python_mod_command[].
+	python_mod_command[50100] = '+';
+	char different_file_name[12] = {"prime_value"};
+	for(int a = 23; a < 34; a++) {python_mod_command[a] = different_file_name[a - 23];}
 	
+	//Finds prime element.
+	int prime_element;
+	for(int a = 900000; a < 1500000; a++)
+	{	if(proximity_sieve[a] == 0) {prime_element = a; break;}
+	}
 	
+	//Brands prime element on python_mod_command[].
+	long long prime_branding = 1000000000000000000;
+	prime_branding += prime_element;
+	for(int b = 50200; b > 50183; b--) //..........Supports longer additives!
+	{	python_mod_command[b] = (prime_branding % 10);
+		python_mod_command[b] += 48;
+		
+		prime_branding /= 10;
+	}
 	
+	//Removes zeros in front of additive.
+	for(int b = 50180;; b++)
+	{	if(python_mod_command[b] == '0') {python_mod_command[b] = ' ';}
+		if(python_mod_command[b]  >  48) {break                      ;}
+	}
 	
-	
-	
-	
+	//Append-writes prime to file.
+	system(python_mod_command);
 	
 	
 	
@@ -216,7 +236,7 @@ int main()
 	
 	//OVERWRITE STUFFF!!!!!!!!!!!!!!!!!!!!!!!
 	
-	//remove mod_results
+	remove("mod_results");
 	
 	cout << "\nDone!\n\n\n";
 }
