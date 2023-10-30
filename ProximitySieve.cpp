@@ -7,7 +7,7 @@
 Applies the sieve of Eratosthenes on an  interval near the n-digit random number
 --listing nearby primes, and testing only one and the same  # by all p <= 65536.
 This is a sort of pretest and is weak, but if n is the product of  at least some
-large primes, and your protocol expects whole length n, then this sieve is OK.*/
+large primes, AND your protocol expects whole length n, then this sieve is OK.*/
 
 #include <fstream>
 #include <iostream>
@@ -228,13 +228,22 @@ int main()
 	//Append-writes prime to file.
 	system(python_mod_command);
 	
+	//Overwrites char python_mod_command[50300].
+	for(int a = 0; a < 50300; a++) {python_mod_command[a] = '\0'; python_mod_command[a] = -1;} //Binary: 00000000, 111111111.
 	
 	
 	
 	
 	
 	
-	//OVERWRITE STUFFF!!!!!!!!!!!!!!!!!!!!!!!
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	remove("mod_results");
 	
