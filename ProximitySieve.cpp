@@ -197,7 +197,7 @@ int main()
 	This  2M-element sieve  accounts  for  ~18,000  consecutive
 	50-digit primes,  and ~18 consecutive  50k-digit primes. */
 	
-	//Element 0 is the given random candidate prime. Zeros are mapped to prime elements.
+	//Element 0 represents the location of the given random candidate prime, on the number line. Zeros are mapped to prime elements.
 	bool proximity_sieve[2000000] = {0};
 	
 	
