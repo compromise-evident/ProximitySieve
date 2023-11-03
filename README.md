@@ -14,3 +14,9 @@ Generates prime checked with p<65,536 (50 to 50k digits long.)
 <br>
 
 ### You can have secure communication using raw semiprimes only! [1](https://twitter.com/redNVR/status/1715952926626103454), [2](https://github.com/compromise-evident/WhatNot/blob/main/Primality-adjusting%20branded%20strings.pdf)
+
+<br>
+<br>
+
+Version 2: the prime chosen from the sieve will have maximum gaps in positive and negative direction.
+This should make the chosen prime much more likely to be prime, and I'll be testing that...
