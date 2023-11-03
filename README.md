@@ -5,7 +5,7 @@ Generates 50-50k-digit prime checked with p<65536 having a prime gap of ~266.
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/compromise-evident/ProximitySieve/main/Other/Terminal_7408ba71caa9d51e67d4b875ce253cdb6ca1cda1d39a58d0a0a4cd34599f0921.png">
+  <img src="https://raw.githubusercontent.com/compromise-evident/ProximitySieve/main/Other/Terminal_af1019dd7d2d6d1e96e5f7fd9950dc42da68e2c45534f397081f13087c6e6e37.png">
 </p>
 
 [Auditing in the browser?](https://coliru.stacked-crooked.com/a/cce8bf8c86c23f87)
