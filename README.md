@@ -19,3 +19,4 @@ Generates 50-50k-digit prime checked with p<65536 having a prime gap of ~308.
 if prime_length (one of the user knobs you may adjust) is equal to 5000, then the first 5000
 elements of random_digits[] will be used to make n. Go ahead and partially brand random_digits[]
 with personal data (but only after the randomness is generated, yet before it's adjusted for primality.)
+And remember: do not disturb the last few digits of n, ever.
