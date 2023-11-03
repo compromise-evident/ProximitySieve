@@ -1,13 +1,12 @@
-/// ProximitySieve - generates 50-50k-digit prime checked with p<65536 having a prime gap of ~266.
+/// ProximitySieve - generates 50-50k-digit prime checked with p<65536 having a prime gap of ~308.
 /// Nikolay Valentinovich Repnitskiy - License: WTFPLv2+ (wtfpl.net)
 
 
-
-/* Version 2.0.0
+/* Version 3.0.0   Eats ~1GB RAM!
 Set testing_mode to true, and you won't have to enter randomness  for the seeds.
 Applies the sieve of Eratosthenes on an  interval near the n-digit random number
 --listing nearby primes, and testing only one and the same  # by all p <= 65536.
-This is a sort of pretest and is weak, but if n is the product of  at least some
+This is a sort of PRETEST AND IS WEAK, but if n is the product of  at least some
 large primes, AND your protocol expects whole length n, then this sieve is OK.*/
 
 #include <fstream>
@@ -184,14 +183,14 @@ int main()
 	
 	//Applies proximity sieve. Element 0 represents location of the given random
 	//candidate prime, on the number line. Zeros are mapped to prime elements.
-	bool proximity_sieve[2000000] = {0};
+	static bool proximity_sieve[1000000000] = {0};
 	long long remainder_index = 0;
 	for(int a = 0; a < 65536; a++)
 	{	if(sieve[a] == 0)
 		{	long long natural_prime_position = (a - remainders[remainder_index]);
 			proximity_sieve[natural_prime_position] = 1;
 			
-			for(; natural_prime_position < 1934460;)
+			for(; natural_prime_position < 999934460;)
 			{	natural_prime_position += a;
 				proximity_sieve[natural_prime_position] = 1;
 			}
@@ -208,7 +207,7 @@ int main()
 	//Finds prime element (having maximum gap in negative direction.)
 	int prime_element;
 	int largest_negative_gap = 0;
-	for(int a = 1000; a < 1868000; a++)
+	for(int a = 1000; a < 999868900; a++)
 	{	if(proximity_sieve[a] == 0)
 		{	//..........Gets gap size in negative direction.
 			int temp_negative_gap = 0;
@@ -256,8 +255,8 @@ int main()
 	//Overwrites RAM of array long long remainders[6542].
 	for(int a = 0; a < 6542; a++) {remainders[a] = 0; remainders[a] = -9223372036854775807; remainders[a] = 9223372036854775807;}
 	
-	//Overwrites RAM of array bool proximity_sieve[2000000].
-	for(int a = 0; a < 2000000; a++) {proximity_sieve[a] = 0; proximity_sieve[a] = 1;}
+	//Overwrites RAM of array static bool proximity_sieve[1000000000].
+	for(int a = 0; a < 1000000000; a++) {proximity_sieve[a] = 0; proximity_sieve[a] = 1;}
 	
 	//Overwrites file "mod_results".
 	out_stream.open("mod_results");
@@ -274,8 +273,8 @@ int main()
 	
 	cout << "\nDone!\n\n"
 	     << "Gap to prime in negative direction: " << largest_negative_gap << "\n"
-	     << "Small gaps means n is unlikely to be prime.\n"
-	     << "Aim for gaps of at least ~266 or higher.\n\n";
+	     << "Small gaps means n is less likely prime.\n"
+	     << "Aim for gaps of at least ~308 or higher.\n\n";
 }
 
 
