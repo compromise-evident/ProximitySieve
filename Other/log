@@ -2,5 +2,9 @@ ProximitySieve log
 
 
 
-Version 1       Perhaps slow because python command is  50,300  characters long.
+Version 2.0.0   Prime now has a gap of ~266 with another  prime  in the negative
+                direction. This increases  primality likeliness.  (266 is best.)
+                Thursday, November 2 2023
+
+Version 1.0.0   Perhaps slow because python command is  50,300  characters long.
                 Monday, October 30 2023
