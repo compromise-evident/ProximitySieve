@@ -96,7 +96,7 @@ int main()
 	if(testing_mode == false) {system("clear");}
 	cout << "\nGenerating " << prime_length << "-digit prime...\n";
 	
-	//Fills random_digits[50000] with random digits. Its first n digits will be used. (n = prime_length.)
+	//Fills random_digits[50000] with random digits. Its first n digits will be used for n then adjusted for primality. (n = prime_length.)
 	unsigned char random_digits[50000] = {0};
 	for(int a = 0; a < 50; a++)
 	{	srand(user_seeds[a]);
