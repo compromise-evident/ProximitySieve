@@ -1,5 +1,5 @@
 <!--
-Generates prime checked with p<65,536 (50 to 50k digits long.)
+Generates 50-50k-digit prime checked with p<65536 having a prime gap of ~266.
 -->
 
 
