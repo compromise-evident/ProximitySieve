@@ -19,3 +19,4 @@ Generates 50-50k-digit prime checked with p<65536 having a prime gap of ~266.
 <br>
 
 Akshoolie forget gaps of 266. proximity_sieve[] will be 1B, just like pqML prime gen. (1m wait time but worth every second!!!!!!!!!!!!!!!).....
+This should bring primality likeliness way the f up.
