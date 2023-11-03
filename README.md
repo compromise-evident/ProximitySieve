@@ -18,5 +18,5 @@ Generates 50-50k-digit prime checked with p<65536 having a prime gap of ~308.
 **unsigned char random_digits[50000]** contains randomness used for n (the prime.) For example:
 if prime_length (a user knob you may adjust) is equal to 5000, then the first 5000
 elements of random_digits[] will be used to make n. Go ahead and partially brand random_digits[]
-with personal data, after the randomness is generated, and before the randomness is
-adjusted for primality.
+with personal data (after the randomness is generated yet before the randomness is
+adjusted for primality.)
