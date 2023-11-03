@@ -2,6 +2,10 @@ ProximitySieve log
 
 
 
+Version 3.0.0   Gap increased to ~308 because proximity_sieve[] is now 1 billion
+                in size so there's more  space in the  sieve to find bigger gaps.
+                Friday, November 3 2023
+
 Version 2.0.0   Prime now has a gap of ~266 with another  prime  in the negative
                 direction. This increases  primality likeliness.  (266 is best.)
                 Thursday, November 2 2023
