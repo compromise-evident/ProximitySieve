@@ -8,7 +8,7 @@ Generates 50-50k-digit prime checked with p<65536 having a prime gap of ~308.
   <img src="https://raw.githubusercontent.com/compromise-evident/ProximitySieve/main/Other/Terminal_68bd99f10d91939b360e11642d3e93170138399324b867e7c2b0986fbfc5f5cd.png">
 </p>
 
-[Auditing in the browser?](https://coliru.stacked-crooked.com/a/cce8bf8c86c23f87)
+[Auditing in the browser?](https://coliru.stacked-crooked.com/a/30b8b92221fd7d5d)
 
 <br>
 <br>
