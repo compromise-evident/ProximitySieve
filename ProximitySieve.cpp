@@ -1,9 +1,9 @@
-/// ProximitySieve - generates prime checked with p<65,536 (50 to 50k digits long.)
+/// ProximitySieve - generates 50-50k-digit prime checked with p<65536 having a prime gap of ~266.
 /// Nikolay Valentinovich Repnitskiy - License: WTFPLv2+ (wtfpl.net)
 
 
 
-/* Version 1.0.0
+/* Version 2.0.0
 Set testing_mode to true, and you won't have to enter randomness  for the seeds.
 Applies the sieve of Eratosthenes on an  interval near the n-digit random number
 --listing nearby primes, and testing only one and the same  # by all p <= 65536.
@@ -33,7 +33,7 @@ int main()
 	bool testing_mode = false; // DEFAULT = false                                              fatal if broken >     |
 	//                                                                                                               |
 	
-	int prime_length = 500; //Range: 50 to 50000. (Technically lower limit is ~7.)
+	int prime_length = 5000; //Range: 50 to 50000. (Technically lower limit is ~7.)
 	
 	/*////////////////                                        \\\\\\\\\\\\\\\\\\
 	///////////////////////                              \\\\\\\\\\\\\\\\\\\\\\\
@@ -97,7 +97,7 @@ int main()
 	if(testing_mode == false) {system("clear");}
 	cout << "\nGenerating " << prime_length << "-digit prime...\n";
 	
-	//Fills random_digits[50000] with random digits. Its first n digits will be used.
+	//Fills random_digits[50000] with random digits. Its first n digits will be used. (n = prime_length.)
 	unsigned char random_digits[50000] = {0};
 	for(int a = 0; a < 50; a++)
 	{	srand(user_seeds[a]);
@@ -205,13 +205,27 @@ int main()
 	char different_file_name[12] = {"prime_value"};
 	for(int a = 23; a < 34; a++) {python_mod_command[a] = different_file_name[a - 23];}
 	
-	//Finds prime element.
+	//Finds prime element (having maximum gap in negative direction.)
 	int prime_element;
-	for(int a = 900000; a < 1500000; a++)
-	{	if(proximity_sieve[a] == 0) {prime_element = a; break;}
+	int largest_negative_gap = 0;
+	for(int a = 1000; a < 1868000; a++)
+	{	if(proximity_sieve[a] == 0)
+		{	//..........Gets gap size in negative direction.
+			int temp_negative_gap = 0;
+			for(int b = (a - 1);; b--)
+			{	if(proximity_sieve[b] == 1) {temp_negative_gap++;}
+				else                        {break              ;}
+			}
+			
+			//..........Retains larger gap.
+			if(temp_negative_gap > largest_negative_gap)
+			{	largest_negative_gap = temp_negative_gap;
+				prime_element = a;
+			}
+		}
 	}
 	
-	//Brands prime element on python_mod_command[].
+	//Brands prime element (index value) on python_mod_command[].
 	long long prime_branding = 1000000000000000000;
 	prime_branding += prime_element;
 	for(int b = 50200; b > 50183; b--) //..........Supports longer additives!
@@ -256,7 +270,12 @@ int main()
 	
 	remove("mod_results");
 	
-	cout << "\nDone!\n\n\n";
+	largest_negative_gap++;
+	
+	cout << "\nDone!\n\n"
+	     << "Gap to prime in negative direction: " << largest_negative_gap << "\n"
+	     << "Small gaps means n is unlikely to be prime.\n"
+	     << "Aim for gaps of at least ~266 or higher.\n\n";
 }
 
 
