@@ -1,11 +1,11 @@
-/// ProximitySieve - generates 50-50k-digit prime checked with p<65536 having a prime gap of ~308.
+/// ProximitySieve - generates 500-50k-digit prime checked with p<4M having a prime gap of ~400.
 /// Nikolay Valentinovich Repnitskiy - License: WTFPLv2+ (wtfpl.net)
 
 
-/* Version 3.0.0   Eats ~1GB RAM!
+/* Version 4.0.0   Eats ~1GB RAM!
 Set testing_mode to true, and you won't have to enter randomness  for the seeds.
 Applies the sieve of Eratosthenes on an  interval near the n-digit random number
---listing nearby primes, and testing only one and the same  # by all p <= 65536.
+--listing nearby primes, and testing only one & the same # by all p < 4 million.
 This is a sort of PRETEST AND IS WEAK, but if n is the product of  at least some
 large primes, AND your protocol expects whole length n, then this sieve is OK.*/
 
@@ -32,7 +32,7 @@ int main()
 	bool testing_mode = false; // DEFAULT = false                                              fatal if broken >     |
 	//                                                                                                               |
 	
-	int prime_length = 5000; //Range: 50 to 50000. (Technically lower limit is ~7.)
+	int prime_length = 5000; //Range: 500 to 50000. (Technically lower limit is ~8.)
 	
 	/*////////////////                                        \\\\\\\\\\\\\\\\\\
 	///////////////////////                              \\\\\\\\\\\\\\\\\\\\\\\
@@ -94,7 +94,7 @@ int main()
 	}
 	
 	if(testing_mode == false) {system("clear");}
-	cout << "\nGenerating " << prime_length << "-digit prime...\n";
+	cout << "\nGenerating " << prime_length << "-digit prime, wait ~90 minutes...\n";
 	
 	//Fills random_digits[50000] with random digits. Its first n digits will be used for n then adjusted for primality. (n = prime_length.)
 	unsigned char random_digits[50000] = {0};
@@ -121,18 +121,18 @@ int main()
 	if(random_digits[0] == 0) {random_digits[0]++;}
 	
 	//Boolean sieve of Eratosthenes. Zeros are mapped to prime elements. Laughably, bool[] & char[] both consume 1 Byte.
-	bool sieve[65536] = {1, 1};
-	for(int prime = 2; prime < 256; prime++) //..........256 is sqrt(65,536).
+	static bool sieve[4000000] = {1, 1};
+	for(int prime = 2; prime < 2000; prime++) //..........2,000 is sqrt(4,000,000). This sieve has 283,146 primes.
 	{	for(; sieve[prime] == 1;) {prime++;} //..........Moves up the list if number already marked off.
-		for(int a = prime + prime; a < 65536; a += prime) {sieve[a] = 1;} //..........Marks multiples (composites.)
+		for(int a = prime + prime; a < 4000000; a += prime) {sieve[a] = 1;} //..........Marks multiples (composites.)
 	}
 	
 	//Brands python_mod_command[] with the n-digit random number (unchanging.)
 	for(int a = 0; a < prime_length; a++) {python_mod_command[a + 66] = (random_digits[a] + 48);}
 	python_mod_command[50100] = '%';
 	
-	//Brands python_mod_command[] with 6,542 prime divisors, one-at-a-time, and executes mod operation, each result appended to file.
-	for(int a = 0; a < 65536; a++)
+	//Brands python_mod_command[] with 283,146 prime divisors, one-at-a-time, and executes mod operation, each result appended to file.
+	for(int a = 0; a < 4000000; a++)
 	{	if(sieve[a] == 0)
 		{	//..........Brands.
 			long long branding_arithmetic = 1000000000000000000;
@@ -156,10 +156,10 @@ int main()
 	}
 	
 	//Fills remainders[] with mod results from file "mod_results".
-	long long remainders[6542] = {0};
+	long long remainders[283146] = {0};
 	char garbage_byte;
 	in_stream.open("mod_results");
-	for(int a = 0; a < 6542; a++)
+	for(int a = 0; a < 283146; a++)
 	{	long long digits_of_individual_remainder[17];
 		for(int b = 0; b < 17; b++) {digits_of_individual_remainder[b] = -1;}
 		in_stream.get(garbage_byte);
@@ -185,14 +185,12 @@ int main()
 	//candidate prime, on the number line. Zeros are mapped to prime elements.
 	static bool proximity_sieve[1000000000] = {0};
 	long long remainder_index = 0;
-	for(int a = 0; a < 65536; a++)
+	for(int a = 0; a < 4000000; a++)
 	{	if(sieve[a] == 0)
 		{	long long natural_prime_position = (a - remainders[remainder_index]);
-			proximity_sieve[natural_prime_position] = 1;
-			
-			for(; natural_prime_position < 999934460;)
-			{	natural_prime_position += a;
-				proximity_sieve[natural_prime_position] = 1;
+			for(; natural_prime_position < 1000000000;)
+			{	proximity_sieve[natural_prime_position] = 1;
+				natural_prime_position += a;
 			}
 			
 			remainder_index++;
@@ -207,14 +205,11 @@ int main()
 	//Finds prime element (having maximum gap in negative direction.)
 	int prime_element;
 	int largest_negative_gap = 0;
-	for(int a = 1000; a < 999868900; a++)
+	for(int a = 1000; a < 1000000000; a++)
 	{	if(proximity_sieve[a] == 0)
 		{	//..........Gets gap size in negative direction.
 			int temp_negative_gap = 0;
-			for(int b = (a - 1);; b--)
-			{	if(proximity_sieve[b] == 1) {temp_negative_gap++;}
-				else                        {break              ;}
-			}
+			for(int b = (a - 1); proximity_sieve[b] == 1; b--) {temp_negative_gap++;}
 			
 			//..........Retains larger gap.
 			if(temp_negative_gap > largest_negative_gap)
@@ -252,19 +247,19 @@ int main()
 	//Overwrites RAM of array unsigned char random_digits[50000].
 	for(int a = 0; a < 50000; a++) {random_digits[a] = 0; random_digits[a] = 255;} //Binary: 00000000, 111111111.
 	
-	//Overwrites RAM of array long long remainders[6542].
-	for(int a = 0; a < 6542; a++) {remainders[a] = 0; remainders[a] = -9223372036854775807; remainders[a] = 9223372036854775807;}
+	//Overwrites RAM of array long long remainders[283146].
+	for(int a = 0; a < 283146; a++) {remainders[a] = 0; remainders[a] = -9223372036854775807; remainders[a] = 9223372036854775807;}
 	
 	//Overwrites RAM of array static bool proximity_sieve[1000000000].
 	for(int a = 0; a < 1000000000; a++) {proximity_sieve[a] = 0; proximity_sieve[a] = 1;}
 	
 	//Overwrites file "mod_results".
 	out_stream.open("mod_results");
-	for(int a = 0; a < 100000; a++) {out_stream << '\0';} //Binary: 00000000.
+	for(int a = 0; a < 5000000; a++) {out_stream << '\0';} //Binary: 00000000.
 	out_stream.close();
 	
 	out_stream.open("mod_results");
-	for(int a = 0; a < 100000; a++) {out_stream.put(-1);} //Binary: 11111111.
+	for(int a = 0; a < 5000000; a++) {out_stream.put(-1);} //Binary: 11111111.
 	out_stream.close();
 	
 	remove("mod_results");
