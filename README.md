@@ -29,7 +29,7 @@ And remember: do not disturb the last few digits of n, ever.
 
 **TLDR:** Applies the sieve of Eratosthenes on an  interval near the n-digit
 random number--listing nearby primes, and testing only n by all primes < 4 million.
-Then is searches the sieve for a prime with the most preceding composites.
+Then it searches the sieve for a prime with the most preceding composites.
 
 char python_mod_command[50300] is a C++ array serving as a string, and is automatically
 branded with a python3 command to perform n mod p<4M, results of which are append-written
