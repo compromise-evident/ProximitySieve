@@ -9,7 +9,7 @@ gap of ~400 (largest found in billion-element sieve.)
   <img src="https://raw.githubusercontent.com/compromise-evident/ProximitySieve/main/Other/Terminal_55e5e93f3162f58de8137fcca7fc0aab9b78af051f27bf26a836335d8dd3aac8.png">
 </p>
 
-[Auditing in the browser?](https://coliru.stacked-crooked.com/a/7469a977dcd8d5d3)
+[Auditing in the browser?](https://coliru.stacked-crooked.com/a/924d283ef6b8e9c6)
 
 <br>
 <br>
