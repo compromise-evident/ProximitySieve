@@ -1,5 +1,5 @@
-/// ProximitySieve - generates 500-50k-digit prime checked with p<4M having a prime
-///                  gap of ~400 (largest found in billion-element sieve.)
+/// ProximitySieve - generates 500-50k-digit prime checked with p<4M and preceded by ~399 verified
+///                  consecutive composites (largest group found in billion-element sieve.)
 /// Nikolay Valentinovich Repnitskiy - License: WTFPLv2+ (wtfpl.net)
 
 
@@ -203,16 +203,16 @@ int main()
 	char different_file_name[12] = {"prime_value"};
 	for(int a = 23; a < 34; a++) {python_mod_command[a] = different_file_name[a - 23];}
 	
-	//Finds prime element (having maximum gap in negative direction.)
+	//Finds prime element (having maximum verified consecutive composites in negative direction.)
 	int prime_element;
 	int largest_negative_gap = 0;
 	for(int a = 1000; a < 1000000000; a++)
 	{	if(proximity_sieve[a] == 0)
-		{	//..........Gets gap size in negative direction.
+		{	//..........Gets "prime gap" size in negative direction.
 			int temp_negative_gap = 0;
 			for(int b = (a - 1); proximity_sieve[b] == 1; b--) {temp_negative_gap++;}
 			
-			//..........Retains larger gap.
+			//..........Retains larger "prime gap."
 			if(temp_negative_gap > largest_negative_gap)
 			{	largest_negative_gap = temp_negative_gap;
 				prime_element = a;
@@ -265,12 +265,9 @@ int main()
 	
 	remove("mod_results");
 	
-	largest_negative_gap++;
-	
-	cout << "\nDone!\n\n"
-	     << "Gap to prime in negative direction: " << largest_negative_gap << "\n"
-	     << "Small gaps means n is less likely prime.\n"
-	     << "Aim for gaps of at least ~400 or higher.\n\n";
+	cout << "\nDone! Verified consecutive composites preceding n: " << largest_negative_gap
+	     << "\n(Largest group found in billion-element sieve marked"
+	     << "\nwith p<4M, aim for ~399+ so n is more likely prime.)\n\n\n\n";
 }
 
 
