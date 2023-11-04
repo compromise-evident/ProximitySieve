@@ -1,5 +1,6 @@
 <!--
-Generates 50-50k-digit prime checked with p<65536 having a prime gap of ~308.
+Generates 500-50k-digit prime checked with p<4M having a prime
+gap of ~400 (largest found in billion-element sieve.)
 -->
 
 
