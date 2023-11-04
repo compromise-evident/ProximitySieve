@@ -2,8 +2,12 @@ ProximitySieve log
 
 
 
+Version 4.0.0   Gap increased to ~400 because now checks with primes < 4,000,000
+                Small changes and improvements, fills  proximity_sieve[] to end.
+                Saturday, November 4 2023
+
 Version 3.0.0   Gap increased to ~308 because proximity_sieve[] is now 1 billion
-                in size so there's more  space in the  sieve to find bigger gaps.
+                in size so there's more space in the  sieve to find bigger gaps.
                 Friday, November 3 2023
 
 Version 2.0.0   Prime now has a gap of ~266 with another  prime  in the negative
