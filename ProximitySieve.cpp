@@ -1,4 +1,5 @@
-/// ProximitySieve - generates 500-50k-digit prime checked with p<4M having a prime gap of ~400.
+/// ProximitySieve - generates 500-50k-digit prime checked with p<4M having a prime
+///                  gap of ~400 (largest found in billion-element sieve.)
 /// Nikolay Valentinovich Repnitskiy - License: WTFPLv2+ (wtfpl.net)
 
 
