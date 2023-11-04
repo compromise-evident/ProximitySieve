@@ -6,7 +6,7 @@ consecutive composites (largest group found in billion-element sieve.)
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/compromise-evident/ProximitySieve/main/Other/Terminal_55e5e93f3162f58de8137fcca7fc0aab9b78af051f27bf26a836335d8dd3aac8.png">
+  <img src="https://raw.githubusercontent.com/compromise-evident/ProximitySieve/main/Other/Terminal_a438435ae6fd19ed6eabacd2601c662270288d067fb42481101a0e6ce67859f1.png">
 </p>
 
 [Auditing in the browser?](https://coliru.stacked-crooked.com/a/36d064a21f485255)
