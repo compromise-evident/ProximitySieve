@@ -36,4 +36,4 @@ largest found. Statistical analysis shows a larger gap means higher primality li
 
 ### Version 5 plans--overkill
 
-Checks with p<100M, preceding composite qty not yet known, wait time not yet known.
+Checks with p<100M, preceding composite quantity not yet known, wait time not yet known.
