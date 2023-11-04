@@ -1,6 +1,6 @@
 <!--
-Generates 500-50k-digit prime checked with p<4M having a prime
-gap of ~400 (largest found in billion-element sieve.)
+Generates 500-50k-digit prime checked with p<4M and preceded by ~399 verified
+consecutive composites (largest group found in billion-element sieve.)
 -->
 
 
