@@ -20,3 +20,13 @@ if prime_length (one of the user knobs you may adjust) is equal to 5000, then th
 elements of random_digits[] will be used to make n. Go ahead and partially brand random_digits[]
 with personal data (but only after the randomness is generated, yet before it's adjusted for primality.)
 And remember: do not disturb the last few digits of n, ever.
+
+<br>
+<br>
+
+### That gap is simply the largest in the billion-element sieve
+
+n's gap to another prime is not representative of this billion-element sieve
+that's being marked with primes less than said limit. n's gap is just the
+largest found in the sieve. Based on some testing, the larger the gap,
+the higher n's primality likeliness.
