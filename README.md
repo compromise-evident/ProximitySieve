@@ -28,5 +28,4 @@ And remember: do not disturb the last few digits of n, ever.
 
 n's gap to another prime is not representative of this billion-element sieve
 that's being marked with primes less than said limit. n's gap is just the
-largest found. Based on stats, the larger the gap,
-the higher n's primality likeliness.
+largest found. Statistical analysis shows larger gaps mean higher primality likeliness.
