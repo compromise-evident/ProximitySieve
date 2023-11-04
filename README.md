@@ -25,6 +25,22 @@ And remember: do not disturb the last few digits of n, ever.
 <br>
 <br>
 
+### How it works
+
+TLDR:
+
+Applies the sieve of Eratosthenes on an  interval near the n-digit random number
+--listing nearby primes, and testing only one & the same # by all p < 4 million.
+
+char python_mod_command[50300] is a C++ array serving as a string, and is automatically
+branded with a python3 command to perform n mod p<4M, results of which are append-written
+to file. C++ then takes those results and applies them against the boolean proximity_sieve[1000000000]
+whose first element represents n (n is the random digits representing a number that is to be
+adjusted for primality.)
+
+<br>
+<br>
+
 ### That gap is simply the largest in the billion-element sieve
 
 n's gap to another prime is not representative of this billion-element sieve
