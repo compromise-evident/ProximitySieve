@@ -269,7 +269,7 @@ int main()
 	cout << "\nDone!\n\n"
 	     << "Gap to prime in negative direction: " << largest_negative_gap << "\n"
 	     << "Small gaps means n is less likely prime.\n"
-	     << "Aim for gaps of at least ~308 or higher.\n\n";
+	     << "Aim for gaps of at least ~400 or higher.\n\n";
 }
 
 
