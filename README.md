@@ -23,12 +23,6 @@ consecutive composites (largest group found in billion-element sieve.) 1m run-ti
 
 ### How it works
 
-**TLDR:** Applies the sieve of Eratosthenes on an  interval near the n-digit
-random number--listing nearby primes, and testing only n by all primes < 4 million.
+Applies the sieve of Eratosthenes on an  interval near the n-digit
+random number--listing nearby primes, and testing only n by all primes < 1 billion.
 Then it searches the sieve for a prime with the most preceding composites.
-
-char python_mod_command[50300] is a C++ array serving as a string, and is automatically
-branded with a python3 command to perform n mod p<4M, results of which are append-written
-to file. C++ then takes those results and applies them against the boolean proximity_sieve[1000000000]
-whose first element represents n (n is the random digits representing a number that is to be
-adjusted for primality.)
