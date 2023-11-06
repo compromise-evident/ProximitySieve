@@ -40,6 +40,6 @@ adjusted for primality.)
 <br>
 <br>
 
-### Version 5 plans--overkill
+### Version 5
 
-Checks with p<100M, preceding composite quantity not yet known, wait time not yet known.
+Using GMP (GNU Multiple Precision Arithmetic Library) instead of calling to python3. Possibly more divisors too...
