@@ -31,3 +31,13 @@ Brand random_digits[ ] with personal data before it's adjusted for primality.
 Applies the sieve of Eratosthenes on an  interval near the n-digit
 random number--listing nearby primes, and testing only n by all primes < 1 billion,
 then searches the sieve for a prime with the most preceding consecutive composites.
+
+<br>
+<br>
+
+## Search the sieve for other possible primes
+
+Search through the boolean proximity_sieve[ ] before it's overwritten.
+Any element containing '0' is not divisible by p<1B. Once you find an element
+you like, set prime_element equal to the index of that element.
+Just erase the block containing "prime_element = a;"
