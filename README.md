@@ -21,7 +21,7 @@ Just do ```apt install libgmp-dev``` then append "-lgmp" to both compile & build
 
 ## You can have secure communication using raw semiprimes only! [1](https://twitter.com/redNVR/status/1715952926626103454), [2](https://github.com/compromise-evident/WhatNot/blob/main/Primality-adjusting%20branded%20strings.pdf)
 
-Brand random_digits[] with personal data before it's adjusted for primality.
+Brand random_digits[ ] with personal data before it's adjusted for primality.
 
 <br>
 <br>
