@@ -1,6 +1,6 @@
 <!--
-Generates 500-50k-digit prime checked with p<4M and preceded by ~399 verified
-consecutive composites (largest group found in billion-element sieve.)
+Generates 100-100k-digit prime checked with p<1B and preceded by ~715 verified
+consecutive composites (largest group found in billion-element sieve.) 1m run-time.
 -->
 
 
