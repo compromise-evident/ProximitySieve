@@ -24,5 +24,5 @@ consecutive composites (largest group found in billion-element sieve.) 1m run-ti
 ## What it does
 
 Applies the sieve of Eratosthenes on an  interval near the n-digit
-random number--listing nearby primes, and testing only n by all primes < 1 billion.
-Then it searches the sieve for a prime with the most preceding consecutive composites.
+random number--listing nearby primes, and testing only n by all primes < 1 billion,
+then searches the sieve for a prime with the most preceding consecutive composites.
