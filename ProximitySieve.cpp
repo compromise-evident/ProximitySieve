@@ -193,7 +193,7 @@ int main()
 	for(int a = 0; a < 50; a++) {user_seeds[a] = 0; user_seeds[a] = 12345678; user_seeds[a] = 87654321; user_seeds[a] = 99999999;}
 	
 	//Overwrites RAM of array char random_digits[200000].
-	for(int a = 0; a < 200000; a++) {random_digits[a] = 0; random_digits[a] = 255;} //Binary: 00000000, 111111111.
+	for(int a = 0; a < 200000; a++) {random_digits[a] = '\0'; random_digits[a] = -1;} //Binary: 00000000, 111111111.
 	
 	//Overwrites RAM of array static bool proximity_sieve[1000000000].
 	for(int a = 0; a < 1000000000; a++) {proximity_sieve[a] = 0; proximity_sieve[a] = 1;}
