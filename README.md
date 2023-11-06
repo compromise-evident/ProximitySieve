@@ -40,7 +40,7 @@ then searches the sieve for a prime with the most preceding consecutive composit
 Search through the boolean proximity_sieve[ ] before it's overwritten.
 Any element containing '0' is not divisible by p<1B. Once you find an element
 you like, set prime_element equal to the index of your element.
-Just erase the block containing "prime_element = a;"
+Just erase the block containing "prime_element = a;".
 
 <br>
 <br>
