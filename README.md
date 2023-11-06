@@ -5,6 +5,11 @@ consecutive composites (largest group found in billion-element sieve.) 1m run-ti
 
 
 
+Just do apt install ```libgmp-dev``` then append ```-lgmp``` to both compile & build commands in Geany. Otherwise compile using ```g++ /path_to_file.cpp -lgmp```
+
+<br>
+<br>
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/compromise-evident/ProximitySieve/main/Other/Terminal_c805a87dc4e4eb1807505ff3124161e161d895651adb16fce335699f3b7ff643.png">
 </p>
