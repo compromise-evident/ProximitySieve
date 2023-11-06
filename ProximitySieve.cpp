@@ -200,8 +200,7 @@ int main()
 	
 	cout << "\nDone! Verified consecutive composites preceding n: " << largest_negative_gap
 	     << "\n(largest group found in billion-element sieve marked"
-	     << "\nwith p<1B, aim for ~715+ so n is more likely prime.)"
-	     << "\nn is saved to file. n - " << (largest_negative_gap + 1) << " might be prime as well.\n\n\n\n\n";
+	     << "\nwith p<1B, aim for ~715+ so n is more likely prime.)\n\n\n\n\n";
 }
 
 
