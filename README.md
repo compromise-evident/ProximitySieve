@@ -14,7 +14,7 @@ Just do ```apt install libgmp-dev``` then append "-lgmp" to both compile & build
   <img src="https://raw.githubusercontent.com/compromise-evident/ProximitySieve/main/Other/Terminal_1e7e80a733141b26347773097d387d7af7f1352f0ebeac197513aef59582e1b1.png">
 </p>
 
-[Auditing in the browser?](https://coliru.stacked-crooked.com/a/e0be8551e4ac66a8)
+[Auditing in the browser?](https://coliru.stacked-crooked.com/a/a45981fab7e7f7af)
 
 <br>
 <br>
