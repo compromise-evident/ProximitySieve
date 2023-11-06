@@ -40,6 +40,6 @@ adjusted for primality.)
 <br>
 <br>
 
-### Version 5
+### Next version
 
 Using GMP (GNU Multiple Precision Arithmetic Library) instead of calling to python3. Possibly more divisors too...
