@@ -9,7 +9,7 @@ consecutive composites (largest group found in billion-element sieve.) 1m run-ti
   <img src="https://raw.githubusercontent.com/compromise-evident/ProximitySieve/main/Other/Terminal_c805a87dc4e4eb1807505ff3124161e161d895651adb16fce335699f3b7ff643.png">
 </p>
 
-[Auditing in the browser?](https://coliru.stacked-crooked.com/a/36d064a21f485255)
+[Auditing in the browser?](https://coliru.stacked-crooked.com/a/1521b8e5f84d2a58)
 
 <br>
 <br>
@@ -36,10 +36,3 @@ branded with a python3 command to perform n mod p<4M, results of which are appen
 to file. C++ then takes those results and applies them against the boolean proximity_sieve[1000000000]
 whose first element represents n (n is the random digits representing a number that is to be
 adjusted for primality.)
-
-<br>
-<br>
-
-### Next version
-
-Using GMP (GNU Multiple Precision Arithmetic Library) instead of calling to python3. Possibly more divisors too...
