@@ -41,3 +41,12 @@ Search through the boolean proximity_sieve[ ] before it's overwritten.
 Any element containing '0' is not divisible by p<1B. Once you find an element
 you like, set prime_element equal to the index of your element.
 Just erase the block containing "prime_element = a;"
+
+<br>
+<br>
+
+## Test ProximitySieve now
+
+Set testing_mode to true, and prime_length to 47.
+Then copy n and paste it into [WolframAlpha](https://www.wolframalpha.com/)
+as follows: is n prime
