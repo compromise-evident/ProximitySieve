@@ -2,6 +2,9 @@ ProximitySieve log
 
 
 
+Version 5.0.1   Better search through  proximity_sieve[], 1k more elements seen.
+                Monday, November 6 2023
+
 Version 5.0.0   Complete rewrite! Gap increased to ~700. Checks with primes less
                 than 1 billion!  Runs in ~1 minute!  Uses GNU Multiple Precision
                 Arithmetic Library (GMP)  which is faster than  calling python3.
