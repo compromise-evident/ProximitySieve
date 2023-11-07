@@ -3,7 +3,7 @@
 /// Nikolay Valentinovich Repnitskiy - License: WTFPLv2+ (wtfpl.net)
 
 
-/* Version 5.0.0   Eats ~2GB RAM!
+/* Version 5.0.1   Eats ~2GB RAM!
 Set testing_mode to true, and you won't have to enter randomness  for the seeds.
 Applies the sieve of Eratosthenes on an  interval near the x-digit random number
 --listing nearby primes, and testing only one & the same n by all p < 1 billion.
@@ -141,17 +141,15 @@ int main()
 	//Finds prime element (having maximum verified consecutive composites in negative direction.)
 	int prime_element;
 	int largest_negative_gap = 0;
-	for(int a = 1000; a < 1000000000; a++)
-	{	if(proximity_sieve[a] == 0)
-		{	//..........Gets "prime gap" size in negative direction.
-			int temp_negative_gap = 0;
-			for(int b = (a - 1); proximity_sieve[b] == 1; b--) {temp_negative_gap++;}
-			
-			//..........Retains larger "prime gap."
-			if(temp_negative_gap > largest_negative_gap)
-			{	largest_negative_gap = temp_negative_gap;
+	for(int temp_ones_counter = 0, a = 0; a < 1000000000; a++)
+	{	if(proximity_sieve[a] == 1) {temp_ones_counter++;}
+		else
+		{	if(temp_ones_counter > largest_negative_gap)
+			{	largest_negative_gap = temp_ones_counter;
 				prime_element = a;
 			}
+			
+			temp_ones_counter = 0;
 		}
 	}
 	
