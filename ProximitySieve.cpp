@@ -115,10 +115,10 @@ int main()
 	}
 	
 	//Begins.
-	mpz_t       dividend, divisor, quotient;
-	mpz_init   (dividend);
-	mpz_init   (divisor );
-	mpz_init   (quotient);
+	mpz_t       dividend, divisor, remainder;
+	mpz_init   (dividend );
+	mpz_init   (divisor  );
+	mpz_init   (remainder);
 	mpz_set_str(dividend, random_digits, 10);
 	static bool proximity_sieve[1000000000] = {0};
 	for(int a = 0; a < 1000000000; a++)
@@ -126,11 +126,11 @@ int main()
 		{	//..........Mod operation.
 			int prime = a;
 			mpz_set_si(divisor, prime);
-			mpz_mod(quotient, dividend, divisor);
-			int extracted_quotient = mpz_get_si(quotient);
+			mpz_mod(remainder, dividend, divisor);
+			int extracted_remainder = mpz_get_si(remainder);
 			
 			//..........Proximity sieve operation.
-			int natural_prime_position = (a - extracted_quotient);
+			int natural_prime_position = (a - extracted_remainder);
 			for(; natural_prime_position < 1000000000;)
 			{	proximity_sieve[natural_prime_position] = 1;
 				natural_prime_position += a;
