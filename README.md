@@ -5,6 +5,8 @@ consecutive composites (largest group found in billion-element sieve.) 1m run-ti
 
 
 
+### Requires GNU Multiple Precision Arithmetic Library
+
 Just do ```apt install libgmp-dev``` then append "-lgmp" to both compile & build commands in Geany, or then compile using ```g++ /path_to/ProximitySieve.cpp -lgmp```
 
 <br>
