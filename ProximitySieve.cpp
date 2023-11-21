@@ -11,10 +11,9 @@ This is not a very strong primality test but if n = the product of at least some
 large primes, AND your protocol expects whole length n, then this sieve is OK.*/
 
 #include <fstream>
-#include <gmp.h> //For GMP
-//(GNU Multiple Precision Arithmetic Library)
-//To get GMP running, do apt install libgmp-dev
-//then append "-lgmp" to both compile & build commands.
+#include <gmp.h> //For GNU Multiple Precision Arithmetic Library.
+//Do apt install libgmp-dev then append "-lgmp" to both compile &
+//build commands. Or then compile: g++ /path_to_tryRSA.cpp -lgmp
 #include <iostream>
 using namespace std;
 
