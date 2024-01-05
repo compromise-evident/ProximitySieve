@@ -21,7 +21,7 @@ commands in Geany, or then compile using ```g++ /path_to_this.cpp -lgmp```
 <br>
 <br>
 
-## You can have secure communication using raw semiprimes only! [1](https://twitter.com/redNVR/status/1715952926626103454), [2](https://github.com/compromise-evident/WhatNot/blob/main/Primality-adjusting%20branded%20strings.pdf)
+## You can have secure communication using raw semiprimes only! [1](https://twitter.com/redNVR/status/1715952926626103454)
 
 Brand random_digits[ ] with personal data before it's adjusted for primality.
 
