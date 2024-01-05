@@ -1,10 +1,3 @@
-<!--
-Generates 100-100k-digit prime checked with p<1B and preceded by ~715 verified
-consecutive composites (largest group found in billion-element sieve.) 1m run-time.
--->
-
-
-
 Requirement: GNU Multiple Precision Arithmetic Library.
 Just do ```apt install libgmp-dev``` then append "-lgmp" to both compile & build
 commands in Geany, or then compile using ```g++ /path_to_this.cpp -lgmp```
@@ -15,8 +8,6 @@ commands in Geany, or then compile using ```g++ /path_to_this.cpp -lgmp```
 <p align="center">
   <img src="https://raw.githubusercontent.com/compromise-evident/ProximitySieve/main/Other/Terminal_1e7e80a733141b26347773097d387d7af7f1352f0ebeac197513aef59582e1b1.png">
 </p>
-
-[Auditing in the browser?](https://coliru.stacked-crooked.com/a/403ec057047e5310)
 
 <br>
 <br>
