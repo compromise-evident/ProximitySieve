@@ -140,8 +140,8 @@ int main()
 	{	if(sieve[a] == 0)
 		{	//..........Mod operation.
 			int prime = a;
-			mpz_set_si(divisor, prime);
-			mpz_mod(remainder, dividend, divisor);
+			mpz_set_si(divisor, prime              );
+			mpz_mod   (remainder, dividend, divisor);
 			int extracted_remainder = mpz_get_si(remainder);
 			
 			//..........Proximity sieve operation.
@@ -177,15 +177,15 @@ int main()
 	mpz_t       n, addend, sum;
 	mpz_init   (n     );
 	mpz_init   (addend);
-	mpz_init   (sum);
+	mpz_init   (sum   );
 	
 	mpz_set_str(n, random_digits,  10);
 	mpz_set_si (addend, prime_element);
 	mpz_set_str(sum, char_sum,     10);
 	
 	//..........Sum operation.
-	mpz_add(sum, n, addend);
-	mpz_get_str(char_sum, 10, sum);
+	mpz_add    (sum, n, addend       );
+	mpz_get_str(char_sum, 10, sum    );
 	
 	//..........Writes.
 	out_stream.open("prime_values", ios::app);
