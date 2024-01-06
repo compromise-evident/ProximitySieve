@@ -1,19 +1,32 @@
-/// ProximitySieve - generates 100-100k-digit prime checked with p<1B and preceded by ~715 verified
-///                  consecutive composites (largest group found in billion-element sieve.) 1m run-time.
-/// Nikolay Valentinovich Repnitskiy - License: WTFPLv2+ (wtfpl.net)
+/// ProximitySieve - generates 100-100k-digit prime checked with p<1B and
+///                  preceded by ~715 verified consecutive composites (largest
+///                  group found in billion-element sieve.) 1m run-time.
 
 
-/* Version 5.0.1   Eats ~2GB RAM!
-Set testing_mode to true, and you won't have to enter randomness  for the seeds.
+/* Version 5.1.0
+#########*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##########
+#####'`                                                                  `'#####
+###'                             Eats ~2GB RAM!                             '###
+##                                                                            ##
+#,         You'll need the GNU Multiple Precision Arithmetic Library.         ,#
+#'       Do apt install libgmp-dev then append "-lgmp" to both compile &      '#
+##        build commands. Or then compile: g++ /path_to_this.cpp -lgmp        ##
+###,            Set testing_mode to true for no randomness enrty.           ,###
+#####,.                                                                  .,#####
+##########*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#########
+
 Applies the sieve of Eratosthenes on an  interval near the x-digit random number
 --listing nearby primes, and testing only one & the same n by all p < 1 billion.
-This is not a very strong primality test but if n = the product of at least some
-large primes, AND your protocol expects whole length n, then this sieve is OK.*/
+
+Encryption - after random_digits[] is filled with randomness, write your message
+onto it in base 10, but ONLY in the middle  e.g. if you set prime_length to 500,
+your message can be branded between elements 200 & 300.  It will be adjusted for
+primality and written to file. Multiply that prime by another of similar length.
+Now you have a semiprime difficult to  "un-multiply".  This is not a very strong 
+primality test. But large numbers of preceding composites will up the chances.*/
 
 #include <fstream>
-#include <gmp.h> //For GNU Multiple Precision Arithmetic Library.
-//Do apt install libgmp-dev then append "-lgmp" to both compile &
-//build commands. Or then compile: g++ /path_to_this.cpp -lgmp
+#include <gmp.h> //For GMP.
 #include <iostream>
 using namespace std;
 
@@ -51,7 +64,6 @@ int main()
 	/////////////////////////////////////  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	//////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 	
-	ifstream in_stream;
 	ofstream out_stream;
 	
 	//Gets seeds for RNG.
@@ -84,14 +96,14 @@ int main()
 	{	srand(user_seeds[a]);
 		
 		if((user_seeds[a] % 2) == 0)
-		{	//Constructively fills random_digits[] LEFT to right based on seeds.
+		{	//..........Constructively fills random_digits[] LEFT to right based on seeds.
 			for(int b = 0; b < 200000; b++)
 			{	random_digits[b] += (rand() % 10);
 				random_digits[b] %= 10;
 			}
 		}
 		else
-		{	//Constructively fills random_digits[] RIGHT to left based on seeds.
+		{	//..........Constructively fills random_digits[] RIGHT to left based on seeds.
 			for(int b = 199999; b >= 0; b--)
 			{	random_digits[b] += (rand() % 10);
 				random_digits[b] %= 10;
@@ -108,10 +120,14 @@ int main()
 	
 	//Boolean sieve of Eratosthenes. Zeros are mapped to prime elements. Laughably, bool[] & char[] both consume 1 Byte.
 	static bool sieve[1000000000] = {1, 1};
-	for(int prime = 2; prime < 31623; prime++) //31,623 is sqrt(1,000,000,000). There are 50,847,534 primes. 
-	{	for(; sieve[prime] == 1;) {prime++;} //Moves up the list if number already marked off.
-		for(int a = prime + prime; a < 1000000000; a += prime) {sieve[a] = 1;} //Marks multiples (composites.)
+	for(int prime = 2; prime < 31623; prime++) //..........31,623 is sqrt(1,000,000,000). There are 50,847,534 primes. 
+	{	for(; sieve[prime] == 1;) {prime++;} //..........Moves up the list if number already marked off.
+		for(int a = prime + prime; a < 1000000000; a += prime) {sieve[a] = 1;} //..........Marks multiples (composites.)
 	}
+	
+	
+	
+	
 	
 	//Begins.
 	mpz_t       dividend, divisor, remainder;
@@ -152,39 +168,30 @@ int main()
 		}
 	}
 	
-	//Creates a command for doing n+prime_element which adjusts n for primality.
-	char python_sum_command[50300] = {"python3 -c 'with open(\"prime_value\", \"a\") as file: file.write(str("}; //..........66-char init.
-	char command_appendix  [   11] = {") + \"\\n\")'"                                                         }; //..........10-char init.
 	
-	//Prepares command for branding.
-	for(int a = 66; a < 50300; a++) {python_sum_command[a        ] = ' '                ;}
-	for(int a =  0; a <    11; a++) {python_sum_command[a + 50289] = command_appendix[a];}
 	
-	//Brands python_sum_command[] with the n-digit random number.
-	for(int a = 0; a < prime_length; a++) {python_sum_command[a + 66] = (random_digits[a]);}
-	python_sum_command[50100] = '+';
 	
-	//Brands prime_element (index value) on python_sum_command[].
-	long long prime_branding = 1000000000000000000;
-	prime_branding += prime_element;
-	for(int b = 50200; b > 50183; b--)
-	{	python_sum_command[b] = (prime_branding % 10);
-		python_sum_command[b] += 48;
-		
-		prime_branding /= 10;
-	}
 	
-	//Removes zeros in front of additive.
-	for(int b = 50180;; b++)
-	{	if(python_sum_command[b] == '0') {python_sum_command[b] = ' ';}
-		if(python_sum_command[b]  >  48) {break                      ;}
-	}
+	//Append-writes to file: n + prime_element which adjusts n for primality.
+	char char_sum[200000];
+	mpz_t       n, addend, sum;
+	mpz_init   (n     );
+	mpz_init   (addend);
+	mpz_init   (sum);
 	
-	//Append-writes prime to file.
-	system(python_sum_command);
+	mpz_set_str(n, random_digits,  10);
+	mpz_set_si (addend, prime_element);
+	mpz_set_str(sum, char_sum,     10);
 	
-	//Overwrites RAM of array char python_sum_command[50300].
-	for(int a = 0; a < 50300; a++) {python_sum_command[a] = '\0'; python_sum_command[a] = -1;} //Binary: 00000000, 111111111.
+	//..........Sum operation.
+	mpz_add(sum, n, addend);
+	mpz_get_str(char_sum, 10, sum);
+	
+	//..........Writes.
+	out_stream.open("prime_values", ios::app);
+	for(int a = 0; char_sum[a] != '\0'; a++) {out_stream.put(char_sum[a]);}
+	out_stream << "\n";
+	out_stream.close();
 	
 	//Overwrites RAM of array unsigned int user_seeds[50].
 	for(int a = 0; a < 50; a++) {user_seeds[a] = 0; user_seeds[a] = 12345678; user_seeds[a] = 87654321; user_seeds[a] = 99999999;}
@@ -194,6 +201,9 @@ int main()
 	
 	//Overwrites RAM of array static bool proximity_sieve[1000000000].
 	for(int a = 0; a < 1000000000; a++) {proximity_sieve[a] = 0; proximity_sieve[a] = 1;}
+	
+	//Overwrites RAM of array char char_sum[200000].
+	for(int a = 0; a < 200000; a++) {char_sum[a] = '\0'; char_sum[a] = -1;} //Binary: 00000000, 111111111.
 	
 	cout << "\nDone! Verified consecutive composites preceding n: " << largest_negative_gap
 	     << "\n(largest group found in billion-element sieve marked"
