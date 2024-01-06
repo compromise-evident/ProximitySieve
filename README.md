@@ -14,7 +14,11 @@ commands in Geany, or then compile using ```g++ /path_to_this.cpp -lgmp```
 
 ## You can have secure communication using raw semiprimes only! [1](https://twitter.com/redNVR/status/1715952926626103454)
 
-Brand random_digits[ ] with personal data before it's adjusted for primality.
+after random_digits[] is filled with randomness, write your message
+onto it in base 10, but ONLY in the middle e.g. if you set prime_length to 500,
+your message can be branded between elements 200 & 300. It will be adjusted for
+primality and written to file. Multiply that prime by another of similar length.
+Now you have a semiprime difficult to "un-multiply".
 
 <br>
 <br>
