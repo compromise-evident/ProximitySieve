@@ -55,6 +55,7 @@ is ~675 or higher, then your 47-digit n is extremely likely prime.
 
 # Limit
 
-310-digit primes have gaps of 315. [ln(10^310) ~= 315](https://www.wolframalpha.com/input?i=ln%2810%5E310%29).
+310-digit primes are mostly separated by 715.
+[ln(10^310) ~= 315](https://www.wolframalpha.com/input?i=ln%2810%5E310%29).
 Primality probabilities of ProximitySieve begin to worsen
 gradually for primes longer than 310 digits.
