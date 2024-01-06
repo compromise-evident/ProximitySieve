@@ -53,9 +53,10 @@ is ~675 or higher, then your 47-digit n is extremely likely prime.
 <br>
 <br>
 
-# Limit
+# Best for primes of 310 digits or less
 
-310-digit primes are mostly separated by 715.
+715 "consecutive composites" before hitting another prime is
+majority-natural for 310-digit primes.
+Generate aanything longer than 310 digits, and probability
+that it's prime begins to worsen gradually.
 [ln(10^310) ~= 315](https://www.wolframalpha.com/input?i=ln%2810%5E310%29).
-Primality probabilities of ProximitySieve begin to worsen
-gradually for primes longer than 310 digits.
