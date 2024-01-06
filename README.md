@@ -12,9 +12,10 @@ commands in Geany, or then compile using ```g++ /path_to_this.cpp -lgmp```
 <br>
 <br>
 
-## You can have secure communication using raw semiprimes only! [1](https://twitter.com/redNVR/status/1715952926626103454)
+## Encryption
 
-after random_digits[] is filled with randomness, write your message
+You can have secure communication sending raw semiprimes only!
+After random_digits[] is filled with randomness, write your message
 onto it in base 10, but ONLY in the middle e.g. if you set prime_length to 500,
 your message can be branded between elements 200 & 300. It will be adjusted for
 primality and written to file. Multiply that prime by another of similar length.
