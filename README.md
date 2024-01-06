@@ -49,3 +49,12 @@ Set testing_mode to true, and prime_length to 47.
 Then copy n and paste it into [WolframAlpha](https://www.wolframalpha.com/)
 as follows: "is n prime" If the number of preceding consecutive composites
 is ~675 or higher, then your 47-digit n is extremely likely prime.
+
+<br>
+<br>
+
+# Limit
+
+310-digit primes have gaps of 315. [ln(10^310) ~= 315](https://www.wolframalpha.com/input?i=ln%2810%5E310%29).
+Primality probabilities of ProximitySieve begin to worsen
+gradually for primes longer than 310 digits.
