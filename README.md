@@ -24,6 +24,17 @@ Now you have a semiprime difficult to "un-multiply".
 <br>
 <br>
 
+# Best for primes of 310 digits or less
+
+715 "consecutive composites" before hitting another prime is
+majority-natural for 310-digit primes.
+Using ProximitySieve, anything longer than 310 digits means the probability
+that it's prime begins to worsen gradually.
+[ln(10^310) ~= 715](https://www.wolframalpha.com/input?i=natural+log+of+%2810%5E310%29).
+
+<br>
+<br>
+
 # What it does
 
 Applies the sieve of Eratosthenes on an  interval near the n-digit
@@ -49,14 +60,3 @@ Set testing_mode to true, and prime_length to 47.
 Then copy n from file and paste it into [WolframAlpha](https://www.wolframalpha.com/)
 as follows: "is n prime". If the number of preceding consecutive composites
 is ~675 or higher, then your 47-digit n is extremely likely prime.
-
-<br>
-<br>
-
-# Best for primes of 310 digits or less
-
-715 "consecutive composites" before hitting another prime is
-majority-natural for 310-digit primes.
-Using ProximitySieve, anything longer than 310 digits means the probability
-that it's prime begins to worsen gradually.
-[ln(10^310) ~= 715](https://www.wolframalpha.com/input?i=natural+log+of+%2810%5E310%29).
