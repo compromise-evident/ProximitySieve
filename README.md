@@ -57,6 +57,6 @@ is ~675 or higher, then your 47-digit n is extremely likely prime.
 
 715 "consecutive composites" before hitting another prime is
 majority-natural for 310-digit primes.
-Anything longer than 310 digits--and the probability
+Using ProximitySieve, anything longer than 310 digits--and the probability
 that it's prime begins to worsen gradually.
 [ln(10^310) ~= 715](https://www.wolframalpha.com/input?i=natural+log+of+%2810%5E310%29).
