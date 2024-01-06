@@ -46,7 +46,7 @@ Just erase the block containing "prime_element = a;".
 # Test ProximitySieve now
 
 Set testing_mode to true, and prime_length to 47.
-Then copy n and paste it into [WolframAlpha](https://www.wolframalpha.com/)
+Then copy n from file and paste it into [WolframAlpha](https://www.wolframalpha.com/)
 as follows: "is n prime" If the number of preceding consecutive composites
 is ~675 or higher, then your 47-digit n is extremely likely prime.
 
