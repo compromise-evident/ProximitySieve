@@ -12,7 +12,7 @@ commands in Geany, or then compile using ```g++ /path_to_this.cpp -lgmp```
 <br>
 <br>
 
-## Encryption
+# Encryption
 
 You can have secure communication sending raw semiprimes only!
 After random_digits[] is filled with randomness, write your message
@@ -24,7 +24,7 @@ Now you have a semiprime difficult to "un-multiply".
 <br>
 <br>
 
-## What it does
+# What it does
 
 Applies the sieve of Eratosthenes on an  interval near the n-digit
 random number--listing nearby primes, and testing only n by all primes < 1 billion,
@@ -33,7 +33,7 @@ then searches the sieve for a prime with the most preceding consecutive composit
 <br>
 <br>
 
-## Search the sieve for other possible primes
+# Search the sieve for other possible primes
 
 Search through the boolean proximity_sieve[ ] before it's overwritten.
 Any element containing '0' is not divisible by p<1B. Once you find an element
@@ -43,7 +43,7 @@ Just erase the block containing "prime_element = a;".
 <br>
 <br>
 
-## Test ProximitySieve now
+# Test ProximitySieve now
 
 Set testing_mode to true, and prime_length to 47.
 Then copy n and paste it into [WolframAlpha](https://www.wolframalpha.com/)
