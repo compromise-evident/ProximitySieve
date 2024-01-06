@@ -59,4 +59,4 @@ is ~675 or higher, then your 47-digit n is extremely likely prime.
 majority-natural for 310-digit primes.
 Generate aanything longer than 310 digits, and probability
 that it's prime begins to worsen gradually.
-[ln(10^310) ~= 315](https://www.wolframalpha.com/input?i=ln%2810%5E310%29).
+[ln(10^310) ~= 715](https://www.wolframalpha.com/input?i=ln%2810%5E310%29).
