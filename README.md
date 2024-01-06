@@ -24,7 +24,7 @@ Now you have a semiprime difficult to "un-multiply".
 <br>
 <br>
 
-# Best for primes of 310 digits or less
+# Best for primes up to 310 digits
 
 715 "consecutive composites" before hitting another prime is
 majority-natural for 310-digit primes.
