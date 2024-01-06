@@ -1,0 +1,31 @@
+ProximitySieve
+
+
+
+Version 5.1.0   KDE desktop environment appears to be a  disaster;  fixed python
+                not converting and handling 5,000-digit ints.  Solution:  purged
+                python. Now additional GMP is responsible for n + prime_element.
+                Jan 6 2024
+
+Version 5.0.1   Better search through  proximity_sieve[], 1k more elements seen.
+                Nov 6 2023
+
+Version 5.0.0   Complete rewrite! Gap increased to ~700. Checks with primes less
+                than 1 billion!  Runs in ~1 minute!  Uses GNU Multiple Precision
+                Arithmetic Library (GMP)  which is faster than  calling python3.
+                Nov 6 2023
+
+Version 4.0.0   Gap increased to ~400 because now checks with primes < 4,000,000
+                Small changes and improvements, fills  proximity_sieve[] to end.
+                Nov 4 2023
+
+Version 3.0.0   Gap increased to ~308 because proximity_sieve[] is now 1 billion
+                in size so there's more space in the  sieve to find bigger gaps.
+                Nov 3 2023
+
+Version 2.0.0   Prime now has a gap of ~266 with another  prime  in the negative
+                direction. This increases  primality likeliness.  (266 is best.)
+                Nov 2 2023
+
+Version 1.0.0   Perhaps slow because python command is  50,300  characters long.
+                Oct 30 2023
