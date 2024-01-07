@@ -190,7 +190,7 @@ int main()
 	//..........Writes.
 	out_stream.open("prime_values", ios::app);
 	for(int a = 0; char_sum[a] != '\0'; a++) {out_stream.put(char_sum[a]);}
-	out_stream << "\n";
+	out_stream << " (preceded by " << largest_negative_gap << " verified consecutive composites... And not divisible by primes less than one billion.\n";
 	out_stream.close();
 	
 	//Overwrites RAM of array unsigned int user_seeds[50].
