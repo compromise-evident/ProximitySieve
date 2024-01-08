@@ -2,6 +2,9 @@ ProximitySieve
 
 
 
+Version 5.2.0   Automatic,up to 310-digit primes,randomness is one-time file-in.
+                Jan 7 2024
+
 Version 5.1.0   KDE desktop environment appears to be a  disaster;  fixed python
                 not converting and handling 5,000-digit ints.  Solution:  purged
                 python. Now additional GMP is responsible for n + prime_element.
