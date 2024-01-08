@@ -28,7 +28,7 @@ Now you have a semiprime difficult to "un-multiply".
 
 713 "consecutive composites" before hitting another prime is
 majority-natural for 310-digit primes. Finding these composite
-groups next to n, is what makes n much more likely to be prime.
+groups next to n, is what makes n much more likely prime.
 [ln(10^310) ~= 713](https://www.wolframalpha.com/input?i=natural+log+of+%2810%5E310%29).
 
 <br>
