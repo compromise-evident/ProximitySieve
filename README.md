@@ -43,7 +43,7 @@ then searches the sieve for a prime with the most preceding consecutive composit
 <br>
 <br>
 
-# Test ProximitySieve now
+# Test it now
 
 Set prime_length to 47.
 Then copy n from file and paste it into [WolframAlpha](https://www.wolframalpha.com/)
