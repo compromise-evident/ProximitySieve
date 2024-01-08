@@ -17,7 +17,7 @@ commands in Geany, or then compile using ```g++ /path_to_this.cpp -lgmp```
 You can have secure communication sending raw semiprimes only!
 After random_digits[] is filled with randomness, write your message
 onto it in base 10, but ONLY in the middle e.g.
-your message can be branded between digits 100 & 200.
+between digits 100 & 200 (elements of random_digits[].)
 The whole thing will then be adjusted for primality
 and written to file. Multiply that prime by another
 of similar length. Now you have a semiprime
