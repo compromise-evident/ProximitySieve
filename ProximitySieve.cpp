@@ -191,7 +191,7 @@ int main()
 	for(int a = 0; char_sum[a] != '\0'; a++) {out_stream.put(char_sum[a]);}
 	out_stream << " (" << prime_length << "-digit prime preceded by "
 	           << largest_negative_gap << " verified consecutive composites... "
-	           << "And not divisible by primes less than one billion.\n";
+	           << "And not divisible by primes less than one billion.)\n";
 	out_stream.close();
 	
 	//Overwrites RAM of array unsigned int user_seeds[50].
