@@ -16,10 +16,12 @@ commands in Geany, or then compile using ```g++ /path_to_this.cpp -lgmp```
 
 You can have secure communication sending raw semiprimes only!
 After random_digits[] is filled with randomness, write your message
-onto it in base 10, but ONLY in the middle e.g. if you set prime_length to 300,
-your message can be branded between elements 100 & 200. It will be adjusted for
-primality and written to file. Multiply that prime by another of similar length.
-Now you have a semiprime difficult to "un-multiply".
+onto it in base 10, but ONLY in the middle e.g.
+your message can be branded between digits 100 & 200.
+The whole thing will then be adjusted for primality
+and written to file. Multiply that prime by another
+of similar length. Now you have a semiprime
+difficult to "un-multiply".
 See line [300](https://github.com/compromise-evident/ProximitySieve/blob/main/ProximitySieve.cpp#L300).
 
 <br>
