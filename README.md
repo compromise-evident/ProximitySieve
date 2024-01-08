@@ -30,6 +30,7 @@ Now you have a semiprime difficult to "un-multiply".
 majority-natural for 310-digit primes. Finding these composite
 groups next to n, is what makes n much more likely prime.
 [ln(10^310) ~= 713](https://www.wolframalpha.com/input?i=natural+log+of+%2810%5E310%29).
+In fact, I've seen groups of 779.
 
 <br>
 <br>
