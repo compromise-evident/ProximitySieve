@@ -130,10 +130,10 @@ int main()
 	
 	
 	//Begins.
-	mpz_t       dividend, divisor, remainder;
-	mpz_init   (dividend );
-	mpz_init   (divisor  );
-	mpz_init   (remainder);
+	mpz_t dividend ; mpz_init (dividend );
+	mpz_t divisor  ; mpz_init (divisor  );
+	mpz_t remainder; mpz_init (remainder);
+	
 	mpz_set_str(dividend, random_digits, 10);
 	static bool proximity_sieve[1000000000] = {0};
 	for(int a = 0; a < 1000000000; a++)
@@ -173,12 +173,11 @@ int main()
 	
 	
 	//Append-writes to file: n + prime_element which adjusts n for primality.
-	char char_sum[200000];
-	mpz_t       n, addend, sum;
-	mpz_init   (n     );
-	mpz_init   (addend);
-	mpz_init   (sum   );
+	mpz_t n     ; mpz_init(n     );
+	mpz_t addend; mpz_init(addend);
+	mpz_t sum   ; mpz_init(sum   );
 	
+	char char_sum[200000];
 	mpz_set_str(n, random_digits,  10);
 	mpz_set_si (addend, prime_element);
 	mpz_set_str(sum, char_sum,     10);
@@ -190,7 +189,9 @@ int main()
 	//..........Writes.
 	out_stream.open("prime_values", ios::app);
 	for(int a = 0; char_sum[a] != '\0'; a++) {out_stream.put(char_sum[a]);}
-	out_stream << " (preceded by " << largest_negative_gap << " verified consecutive composites... And not divisible by primes less than one billion.\n";
+	out_stream << " (" << prime_length << "-digit prime preceded by "
+	           << largest_negative_gap << " verified consecutive composites... "
+	           << "And not divisible by primes less than one billion.\n";
 	out_stream.close();
 	
 	//Overwrites RAM of array unsigned int user_seeds[50].
