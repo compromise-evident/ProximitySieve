@@ -20,6 +20,7 @@ onto it in base 10, but ONLY in the middle e.g. if you set prime_length to 300,
 your message can be branded between elements 100 & 200. It will be adjusted for
 primality and written to file. Multiply that prime by another of similar length.
 Now you have a semiprime difficult to "un-multiply".
+See line [300](https://github.com/compromise-evident/ProximitySieve/blob/main/ProximitySieve.cpp#L300).
 
 <br>
 <br>
